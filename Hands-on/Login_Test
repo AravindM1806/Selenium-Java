@@ -1,0 +1,22 @@
+package Hands-on;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LoginTest {
+
+	public static void main(String[] args) {
+		// launch firefox browser.
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		//load URL.
+		driver.get("https://signon.oracle.com/signin");
+		//enter username.
+		driver.findElementByXPath("//*[@id=\"idcs-signin-basic-signin-form-username\"]").sendKeys("aravindaravind7139@gmail.com");
+		//enter password.
+		driver.findElementByXPath("//*[@id=\"idcs-auth-pwd-input|input\"]").sendKeys("Aravivj@1829");
+		//click submit button.
+		driver.findElementByXPath("//*[@id=\"ui-id-2\"]").click();
+		
+
+	}
+
+}
