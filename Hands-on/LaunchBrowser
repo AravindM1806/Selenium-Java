@@ -1,0 +1,14 @@
+package datatype;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LaunchBrowser {
+
+	public static void main(String[] args) {
+		// firefox browser
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver=new FirefoxDriver();
+
+	}
+
+}
