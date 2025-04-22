@@ -1,0 +1,31 @@
+package datatype;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class DriverNavigations {
+
+	public static void main(String[] args) {
+		// launch browser.
+		System.setProperty("webdriver.gecko.driver",
+				"C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		//Load url
+		driver.get("https://letcode.in/button");
+		//get current url
+		String url=driver.getCurrentUrl();
+		System.out.println("button page url"+url);
+		//click Goto Home and come back here using driver commanda
+		driver.findElementById("home").click();
+		String homeurl=driver.getCurrentUrl();
+		System.out.println("home page url"+homeurl);
+		// back to pervious page 
+		driver.navigate().back();
+		System.out.println(driver.getCurrentUrl());
+		//open new url
+		driver.navigate().to("https://letcode.in/edit");
+		String newurl=driver.getCurrentUrl();
+		System.out.println("new page url"+newurl);
+
+	}
+
+}
