@@ -1,0 +1,46 @@
+package hands_on;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LearnHandlingAlerts {
+
+	public static void main(String[] args) {
+		// launch browser.
+		System.setProperty("webdriver.gecko.driver",
+				"C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.get("https://www.tutorialspoint.com/selenium/practice/alerts.php");
+		String url = driver.getCurrentUrl();
+		System.out.println("Current url" + url);
+		
+		//smiple alert handling.
+		driver.findElementByXPath("//button[.=\"Alert\"]").click();
+		Alert alert = driver.switchTo().alert();
+		String text = alert.getText();
+		System.out.println("Simple Alert text"+ " " + text);
+		//alert.accept();
+		alert.dismiss();
+		
+		//confirmation alert handling
+		driver.findElementByXPath("/html/body/main/div/div/div[2]/div[3]/button").click();
+		Alert alert1 = driver.switchTo().alert();
+		String txt= alert1.getText();
+		System.out.println(txt);
+		alert1.accept();
+		//alert1.dismiss();
+		
+		//prompt alert handling.
+		driver.findElementByXPath("/html/body/main/div/div/div[2]/div[4]/button").click();
+		Alert alt = driver.switchTo().alert();
+		alt.sendKeys("Aravind M");
+		System.out.println(alt.getText());
+		//alt.dismiss();
+		alt.accept();
+		
+		//cloase the browser. /html/body/main/div/div/div[2]/div[3]/button
+		driver.quit();
+		
+	}
+
+}
