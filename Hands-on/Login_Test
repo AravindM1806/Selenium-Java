@@ -1,4 +1,4 @@
-package Hands-on;
+package hands-on;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LoginTest {
