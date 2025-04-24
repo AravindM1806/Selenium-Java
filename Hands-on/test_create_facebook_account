@@ -1,0 +1,44 @@
+package hands_on;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Facebook_login {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("https://www.facebook.com");
+		String Urlname = driver.getCurrentUrl();
+		System.out.println(Urlname);
+		//creating a new account.
+		driver.findElementByXPath("//a[contains(text(),'Create new account')]").click();
+		Thread.sleep(3000);
+		//entering all details.
+		WebElement web = driver.findElementByName("firstname");
+		web.click();
+		web.sendKeys("Bala");
+		WebElement w =  driver.findElementByName("lastname");
+		w.click();
+	  w.sendKeys("Murugan");
+	  Thread.sleep(3000);
+		driver.findElementByName("birthday_day").sendKeys("9");
+		driver.findElementByName("birthday_month").sendKeys("Jun");
+		driver.findElementByName("birthday_year").sendKeys("1999");
+		driver.findElementByXPath("//input[@value='2']").click();
+		WebElement web1 = driver.findElementByXPath("//input[contains(@id,'u_0_h_')]");
+		web1.click();
+		web1.sendKeys("9003075880");
+		WebElement E = driver.findElementById("password_step_input");
+		E.click();
+		E.sendKeys("bala@123");
+		driver.findElementByName("websubmit").click();
+		System.out.println("All the Details entered success");
+		
+		driver.quit();
+
+	}
+
+}
