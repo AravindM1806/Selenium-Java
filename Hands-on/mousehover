@@ -1,0 +1,26 @@
+package hands_on;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class MouseHover {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		
+		driver.get("https://www.amazon.in");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		WebElement target = driver.findElementByLinkText("Electronics");
+		Actions builder = new Actions(driver);
+		builder.moveToElement(target).click().perform();
+		driver.findElementByXPath("//span[.='Mobiles & Accessories']").click();
+		driver.quit();	
+
+	}
+
+}
