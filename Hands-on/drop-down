@@ -1,0 +1,50 @@
+package hands_on;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropDown {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\ARAVIND\\eclipse-workspace\\Letcode\\drivers\\geckodriver.exe");
+		FirefoxDriver driver = new FirefoxDriver();
+		
+		driver.get("https://letcode.in/dropdowns");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		WebElement fruits = driver.findElementByCssSelector("#fruits");
+		Select myfruits = new Select(fruits);
+		boolean myfru = myfruits.isMultiple();
+		System.out.println("is multiple" +myfru);
+		myfruits.selectByVisibleText("Mango");
+		myfruits.selectByValue("3");
+		WebElement e = myfruits.getFirstSelectedOption(); // It display last selected option in the list.
+		System.out.println(e.getText());
+		
+		WebElement country = driver.findElementByCssSelector("#country");
+		Select mycountry = new Select(country);
+		mycountry.selectByValue("India");
+		
+		// It display all selected options in the list.
+		WebElement lang = driver.findElementById("lang");
+		Select mylang = new Select(lang);
+		mylang.selectByVisibleText("Swift");
+		List<WebElement> Allopt = mylang.getAllSelectedOptions();
+		for (WebElement webElement : Allopt) {
+			System.out.println(webElement.getText());
+		}
+    // It display all options in the dropdown list.
+		List<WebElement> Alloptions = mylang.getOptions();
+	    for (WebElement webElement : Alloptions) {
+			System.out.println(webElement.getText());
+		}
+		
+		driver.quit();
+		
+	}
+
+}
